@@ -5,10 +5,10 @@ function Weather() {
     const [city, setCity] = useState(null)
     const [search, setSearch] = useState("Delhi");
 
-
+    const apikey=process.env.REACT_APP_WEATHER_API
 
     const fetchapi = async () => {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=6f66c8a1a45392fcee00f195163e66bc`
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=${apikey}`
         const response = await fetch(url);
         console.log(response)
         const resjson = await response.json();
@@ -42,7 +42,7 @@ function Weather() {
                         ) : (
                             <div className="card text-center">
                                 <div className="card-header">
-                                    <h3>{search}</h3>
+                                    <h3>{search.toUpperCase()}</h3>
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title"></h5>
